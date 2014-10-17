@@ -27,11 +27,10 @@ class Goal {
 	protected $team;
 
 	/**
-	 * @var \FlorianX\FifaLiga\Domain\Model\Match
-	 * @ORM\Column(name="g_match")
+	 * @var \FlorianX\FifaLiga\Domain\Model\Game
 	 * @ORM\ManyToOne(inversedBy="goals")
 	 */
-	protected $match;
+	protected $game;
 
 	/**
 	 * @var \DateTime
@@ -44,14 +43,14 @@ class Goal {
 	 *
 	 * @param \FlorianX\FifaLiga\Domain\Model\Player $player
 	 * @param \FlorianX\FifaLiga\Domain\Model\Team $team
-	 * @param \FlorianX\FifaLiga\Domain\Model\Match $match
+	 * @param \FlorianX\FifaLiga\Domain\Model\Game $game
 	 * @param \DateTime $minute
 	 * @param float $value
 	 */
-	public function __construct($player, $team, $match, $minute) {
+	public function __construct($player, $team, $game, $minute) {
 		$this->player = $player;
 		$this->team = $team;
-		$this->match = $match;
+		$this->game = $game;
 		$this->minute = $minute;
 	}
 
@@ -70,10 +69,10 @@ class Goal {
 	}
 
 	/**
-	 * @return \FlorianX\FifaLiga\Domain\Model\Match
+	 * @return \FlorianX\FifaLiga\Domain\Model\Game
 	 */
-	public function getMatch() {
-		return $this->match;
+	public function getGame() {
+		return $this->game;
 	}
 
 	/**

@@ -7,9 +7,9 @@ namespace FlorianX\FifaLiga\Tests\Unit\Domain\Model;
  *                                                                        */
 
 /**
- * Testcase for Match
+ * Testcase for Game
  */
-class MatchTest extends \TYPO3\Flow\Tests\UnitTestCase {
+class GameTest extends \TYPO3\Flow\Tests\UnitTestCase {
 
 	/**
 	 * @test

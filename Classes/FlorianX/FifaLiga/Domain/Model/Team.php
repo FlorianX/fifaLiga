@@ -21,11 +21,10 @@ class Team {
 	protected $player;
 
 	/**
-	 * @var \FlorianX\FifaLiga\Domain\Model\Match
-	 * @ORM\Column(name="t_match")
+	 * @var \FlorianX\FifaLiga\Domain\Model\Game
 	 * @ORM\ManyToOne(inversedBy="teams")
 	 */
-	protected $match;
+	protected $game;
 
 	/**
 	 * @var \Doctrine\Common\Collections\Collection<\FlorianX\FifaLiga\Domain\Model\Goal>
@@ -41,7 +40,6 @@ class Team {
 
 	/**
 	 * @var \FlorianX\FifaLiga\Domain\Model\Event
-	 * @ORM\Column(name="t_event")
 	 * @ORM\ManyToOne(inversedBy="teams")
 	 */
 	protected $event;
@@ -62,18 +60,18 @@ class Team {
 	}
 
 	/**
-	 * @return \FlorianX\FifaLiga\Domain\Model\Match
+	 * @return \FlorianX\FifaLiga\Domain\Model\Game
 	 */
-	public function getMatch() {
-		return $this->match;
+	public function getGame() {
+		return $this->game;
 	}
 
 	/**
-	 * @param \FlorianX\FifaLiga\Domain\Model\Match $match
+	 * @param \FlorianX\FifaLiga\Domain\Model\Game $game
 	 * @return void
 	 */
-	public function setMatch(\FlorianX\FifaLiga\Domain\Model\Match $match) {
-		$this->match = $match;
+	public function setGame(\FlorianX\FifaLiga\Domain\Model\Game $game) {
+		$this->game = $game;
 	}
 
 	/**

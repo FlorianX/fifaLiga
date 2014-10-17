@@ -10,9 +10,9 @@ use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @Flow\Entity
+ * @Flow\ValueObject
  */
-class Match {
+class Game {
 
 	/**
 	 * @var \DateTime
@@ -31,36 +31,47 @@ class Match {
 
 	/**
 	 * @var \Doctrine\Common\Collections\Collection<\FlorianX\FifaLiga\Domain\Model\Team>
-	 * @ORM\OneToMany(mappedBy="match")
+	 * @ORM\OneToMany(mappedBy="game")
 	 */
 	protected $teams;
 
 	/**
 	 * @var \Doctrine\Common\Collections\Collection<\FlorianX\FifaLiga\Domain\Model\Goal>
-	 * @ORM\OneToMany(mappedBy="match")
+	 * @ORM\OneToMany(mappedBy="game")
 	 */
 	protected $goals;
 
 	/**
 	 * @var \FlorianX\FifaLiga\Domain\Model\GameDay
-	 * @ORM\ManyToOne(inversedBy="matches")
+	 * @ORM\ManyToOne(inversedBy="games")
 	 */
 	protected $gameDay;
 
 
 	/**
+	 * Constructs a new Price
+	 *
+	 * @param \DateTime $halfTimeLength
+	 * @param boolean $overtime
+	 * @param boolean $penatlies
+	 * @param \Doctrine\Common\Collections\Collection<\FlorianX\FifaLiga\Domain\Model\Team> $teams
+	 * @param \Doctrine\Common\Collections\Collection<\FlorianX\FifaLiga\Domain\Model\Goal> $goals
+	 * @param \FlorianX\FifaLiga\Domain\Model\GameDay $gameDay
+	 */
+	public function __construct($halfTimeLength, $overtime, $penatlies, $teams, $goals, $gameDay) {
+		$this->halfTimeLength = $halfTimeLength;
+		$this->overtime = $overtime;
+		$this->penatlies = $penatlies;
+		$this->teams = $teams;
+		$this->goals = $goals;
+		$this->gameDay = $gameDay;
+	}
+	
+	/**
 	 * @return \DateTime
 	 */
 	public function getHalfTimeLength() {
 		return $this->halfTimeLength;
-	}
-
-	/**
-	 * @param \DateTime $halfTimeLength
-	 * @return void
-	 */
-	public function setHalfTimeLength($halfTimeLength) {
-		$this->halfTimeLength = $halfTimeLength;
 	}
 
 	/**
@@ -71,26 +82,10 @@ class Match {
 	}
 
 	/**
-	 * @param boolean $overtime
-	 * @return void
-	 */
-	public function setOvertime($overtime) {
-		$this->overtime = $overtime;
-	}
-
-	/**
 	 * @return boolean
 	 */
 	public function getPenatlies() {
 		return $this->penatlies;
-	}
-
-	/**
-	 * @param boolean $penatlies
-	 * @return void
-	 */
-	public function setPenatlies($penatlies) {
-		$this->penatlies = $penatlies;
 	}
 
 	/**
@@ -101,26 +96,10 @@ class Match {
 	}
 
 	/**
-	 * @param \Doctrine\Common\Collections\Collection<\FlorianX\FifaLiga\Domain\Model\Team> $teams
-	 * @return void
-	 */
-	public function setTeams(\Doctrine\Common\Collections\Collection $teams) {
-		$this->teams = $teams;
-	}
-
-	/**
 	 * @return \Doctrine\Common\Collections\Collection<\FlorianX\FifaLiga\Domain\Model\Goal>
 	 */
 	public function getGoals() {
 		return $this->goals;
-	}
-
-	/**
-	 * @param \Doctrine\Common\Collections\Collection<\FlorianX\FifaLiga\Domain\Model\Goal> $goals
-	 * @return void
-	 */
-	public function setGoals(\Doctrine\Common\Collections\Collection $goals) {
-		$this->goals = $goals;
 	}
 
 	/**
@@ -129,13 +108,4 @@ class Match {
 	public function getGameDay() {
 		return $this->gameDay;
 	}
-
-	/**
-	 * @param \FlorianX\FifaLiga\Domain\Model\GameDay $gameDay
-	 * @return void
-	 */
-	public function setGameDay(\FlorianX\FifaLiga\Domain\Model\GameDay $gameDay) {
-		$this->gameDay = $gameDay;
-	}
-
 }

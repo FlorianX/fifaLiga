@@ -15,10 +15,10 @@ use Doctrine\ORM\Mapping as ORM;
 class GameDay {
 
 	/**
-	 * @var \Doctrine\Common\Collections\Collection<\FlorianX\FifaLiga\Domain\Model\Match>
+	 * @var \Doctrine\Common\Collections\Collection<\FlorianX\FifaLiga\Domain\Model\Game>
 	 * @ORM\OneToMany(mappedBy="gameDay")
 	 */
-	protected $matches;
+	protected $games;
 
 	/**
 	 * @var \FlorianX\FifaLiga\Domain\Model\Schedule
@@ -33,18 +33,18 @@ class GameDay {
 
 
 	/**
-	 * @return \Doctrine\Common\Collections\Collection<\FlorianX\FifaLiga\Domain\Model\Match>
+	 * @return \Doctrine\Common\Collections\Collection<\FlorianX\FifaLiga\Domain\Model\Game>
 	 */
-	public function getMatches() {
-		return $this->matches;
+	public function getGames() {
+		return $this->games;
 	}
 
 	/**
-	 * @param \Doctrine\Common\Collections\Collection<\FlorianX\FifaLiga\Domain\Model\Match> $matches
+	 * @param \Doctrine\Common\Collections\Collection<\FlorianX\FifaLiga\Domain\Model\Game> $games
 	 * @return void
 	 */
-	public function setMatches(\Doctrine\Common\Collections\Collection $matches) {
-		$this->matches = $matches;
+	public function setGames(\Doctrine\Common\Collections\Collection $games) {
+		$this->games = $games;
 	}
 
 	/**
