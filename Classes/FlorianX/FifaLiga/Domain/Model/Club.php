@@ -23,7 +23,7 @@ class Club {
 	protected $name;
 
 	/**
-	 * @ORM\ManyToOne(inversedBy="clubs")
+	 * @ORM\ManyToOne(inversedBy="clubs", cascade={"persist","merge", "detach", "refresh"})
 	 * @var \FlorianX\FifaLiga\Domain\Model\League
 	 */
 	protected $league;

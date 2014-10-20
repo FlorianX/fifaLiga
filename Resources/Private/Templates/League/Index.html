@@ -1,0 +1,25 @@
+<f:layout name="Default" />
+
+<f:section name="Title">A list of leagues</f:section>
+
+<f:section name="Content">
+	<f:if condition="{leagues}">
+		<f:then>
+			<ul>
+				<f:for each="{leagues}" as="league">
+					<li>
+						<f:link.action action="show" arguments="{league: league}">{league.name}</f:link.action>
+						<f:link.action action="edit" arguments="{league: league}">Edit</f:link.action>
+						<f:form action="delete" arguments="{league: league}">
+							<f:form.submit value="Delete" />
+						</f:form>
+					</li>
+				</f:for>
+			</ul>
+		</f:then>
+		<f:else>
+			<p>No leagues created yet.</p>
+		</f:else>
+	</f:if>
+	<p><f:link.action action="new">Create a new league</f:link.action></p>
+</f:section>

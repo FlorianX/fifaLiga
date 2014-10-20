@@ -1,0 +1,29 @@
+<f:layout name="Default" />
+
+<f:section name="Title">Show league"{league.name}"</f:section>
+
+<f:section name="Content">
+	<table>
+		<tr>
+			<th>Name</th>
+			<td>{league.name}</td>
+		</tr>
+	
+		<tr>
+			<th>Clubs</th>
+			<td>
+				<ul>
+					<f:for each="{league.clubs}" as="club">
+						<li>{club.name}</li>
+					</f:for>
+				</ul>
+			</td>
+		</tr>
+	
+		<tr>
+			<th>Country</th>
+			<td>{league.country.name}</td>
+		</tr>
+	</table>
+	<f:link.action action="index">Back</f:link.action>
+</f:section>

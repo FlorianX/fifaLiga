@@ -1,0 +1,25 @@
+<f:layout name="Default" />
+
+<f:section name="Title">A list of countries</f:section>
+
+<f:section name="Content">
+	<f:if condition="{countries}">
+		<f:then>
+			<ul>
+				<f:for each="{countries}" as="country">
+					<li>
+						<f:link.action action="show" arguments="{country: country}">{country.name}</f:link.action>
+						<f:link.action action="edit" arguments="{country: country}">Edit</f:link.action>
+						<f:form action="delete" arguments="{country: country}">
+							<f:form.submit value="Delete" />
+						</f:form>
+					</li>
+				</f:for>
+			</ul>
+		</f:then>
+		<f:else>
+			<p>No countries created yet.</p>
+		</f:else>
+	</f:if>
+	<p><f:link.action action="new">Create a new country</f:link.action></p>
+</f:section>
